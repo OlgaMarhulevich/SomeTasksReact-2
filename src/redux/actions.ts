@@ -8,7 +8,8 @@ export enum ACTIONS_TYPE {
 export type CurrencyReducersTypes = ChangeCurrencyFieldType | ChangeAction | ChangeCurrentCurrencyType;
 
 //AC
-export type ChangeCurrencyFieldType = {
+export type ChangeCurrencyFieldType =
+    {
     type: ACTIONS_TYPE.CHANGE_CURRENCY_FIELD_TYPE
     payload: {
         amountOfBYN: string
