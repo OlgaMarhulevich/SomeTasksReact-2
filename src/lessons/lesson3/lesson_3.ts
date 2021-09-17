@@ -1,4 +1,33 @@
+import axios from "axios";
+
 console.log('lesson 3');
+
+const axiosInstance = axios.create({
+    baseURL: 'https://jsonplaceholder.typicode.com'
+})
+
+//GET
+axiosInstance.get('/posts').then(res => console.log(res.data))
+axiosInstance.get('/posts/1').then(res => console.log(res.data))
+//POST
+axiosInstance.post('/posts', {
+    title: 'NEW',
+    body: 'something',
+    userId: 1
+}).then(res => console.log(res.data))
+//PUT
+axiosInstance.put('/posts/1', {id: 1,
+    title: 'foo',
+    body: 'bar',
+    userId: 1,}).then(res => console.log(res.data))
+//PATCH
+axiosInstance.patch('/posts/1', {title: 'foo'})
+    .then(res => console.log(res.data))
+//DELETE
+axiosInstance.delete('/posts/1')
+    .then(res => console.log(res.data))
+
+
 
 // Event loop
 // https://learn.javascript.ru/event-loop
@@ -14,7 +43,3 @@ console.log('lesson 3');
 
 // https://jsonplaceholder.typicode.com/posts/1
 // https://habr.com/ru/company/oleg-bunin/blog/417461/?_ga=2.54695343.543933152.1602500664-1040035071.1596811661
-
-
-// just a plug
-export default ()=>{};
