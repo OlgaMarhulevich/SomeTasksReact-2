@@ -10,13 +10,25 @@ const Lesson3 = () => {
 
     const searchFilm = () => {
         API.searchFilmsByTitle(searchName)
-            .then(res => setSearchResult(res))
+            .then(res => {
+                const {Response, Search} = res.data
+                Response === 'True' ?
+                    setSearchResult(JSON.stringify(Search))
+                    :
+                    setSearchResult('ERROR')
+            })
     };
 
     const searchByType = (e: React.MouseEvent<HTMLButtonElement>) => {
         const type: string = e.currentTarget.dataset.t ? e.currentTarget.dataset.t : '';
         API.searchFilmsByType(searchNameByType, type)
-            .then(res => setSearchResultByType(res))
+            .then(res => {
+                const {Response} = res.data
+                Response === 'True' ?
+                    setSearchResultByType(JSON.stringify(res.data))
+                    :
+                    setSearchResultByType('ERROR')
+            })
     }
 
     return (
@@ -44,3 +56,5 @@ const Lesson3 = () => {
     );
 }
 export default Lesson3;
+
+
